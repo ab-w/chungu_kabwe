@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('rapid_responses', function (Blueprint $table) {
             $table->id();
+            $table->string('destination');
+            $table->string('book_in');
+            $table->string('book_out');
+            $table->string('officer_id');
+            $table->string('visit');
             $table->timestamps();
-            $table->string('');
-            $table->string('');
-            $table->string('');
-            $table->string('      '); 
-            $table->string(''); 
-            $table->string('');
-            
+
 
         });
     }

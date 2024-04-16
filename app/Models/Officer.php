@@ -24,4 +24,9 @@ class Officer extends Model
             return $this->hasMany(Occurrence::class, 'officer_id', 'id');
         }
 
+        public function officer()
+        {
+            return $this->hasMany(Officer::class, 'officer_id', 'id');
+        }
+
 }

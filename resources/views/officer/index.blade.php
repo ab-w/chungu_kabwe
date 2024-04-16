@@ -213,6 +213,13 @@
                                                 <input class="form-control" type="file" name="image">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label>Officer Type <span class="text-danger">*</span></label>
+                                            <select class="select" name="officer_type">
+                                                <option>Unza Officer</option>
+                                                <option>Control 7</option>
+                                            </select>
+                                        </div>
 
                                         <div class="submit-section">
                                             <button class="btn btn-primary submit-btn">Save</button>
