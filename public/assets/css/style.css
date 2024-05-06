@@ -1811,8 +1811,8 @@ table.dataTable thead > tr > td.sorting {
 .add-btn:hover,
 .add-btn:focus,
 .add-btn:active {
-	background-color: #f10e1d;
-	border: 1px solid #f10e1d;
+	background-color: #032902;
+	border: 1px solid #032902;
     color: #fff;
 }
 .add-btn i {

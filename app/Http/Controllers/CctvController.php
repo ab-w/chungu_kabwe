@@ -45,7 +45,7 @@ class CctvController extends Controller
                 'last_maintenance' => $request->last_maintenance,
             ]);
 
-            return redirect()->route('occurrence.index')->with('message','Occurrence created successfully.');
+            return redirect()->route('cctv.index')->with('message','Occurrence created successfully.');
         }
 
 

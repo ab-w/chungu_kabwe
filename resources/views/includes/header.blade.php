@@ -40,7 +40,8 @@
 							</form>
 						</div>
 					</li>
-					<!-- /Search -->
+
+								<!-- /Search -->
 
 					{{-- <!-- Notifications -->
 					<li class="nav-item dropdown">

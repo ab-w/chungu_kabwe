@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Occurrence;
+use App\Models\cr;
+use App\Models\User;
 use App\Models\Officer;
+use Illuminate\Http\Rest;
+use App\Models\Occurrence;
 use Illuminate\Http\Request;
-
+use App\Models\UserDataExport;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\UsersDataExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\Exportable;
 class OccurrenceController extends Controller
 {
     /**
@@ -27,7 +34,14 @@ class OccurrenceController extends Controller
         $occurrence=Occurrence::all();
         return view ('occurrence.create',compact('occurrence','officer'));
     }
-
+    public function viewPdf()
+    {
+  
+    $occurrence=Occurrence::all();
+    $pdf = Pdf::loadView('occurrence.user',array('occurrence'))
+    ->setPaper('a4', 'portrait');
+    return $pdf->stream();
+}
     /**
      * Store a newly created resource in storage.
      */
@@ -49,7 +63,13 @@ class OccurrenceController extends Controller
 
         return redirect()->route('occurrence.index')->with('message','Occurrence created successfully.');
     }
+public function export_user_pdf(){
+  
 
+    $pdf = Pdf::loadView('occurrence.user');
+    return $pdf->download('user.pdf');
+    
+}
 
     /**
      * Display the specified resource.

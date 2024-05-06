@@ -43,6 +43,7 @@ class OfficerController extends Controller
 
         $officer = new Officer;
         $officer->name = $request->name;
+        $officer->officer_type = $request->officer_type;
         $officer->phone_number = $request->phone_number;
         $officer->address = $request->address;
         $officer->badge_number = $request->badge_number;

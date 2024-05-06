@@ -57,69 +57,18 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Occurrences</h3>
+								<h3 class="page-title">University Digital Systems </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Occurrence</li>
+									<li class="breadcrumb-item active">Installed CCTV and Biometric System</li>
 								</ul>
 							</div>
 							<div class="col-auto float-right ml-auto">
-								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary"><i class="fa fa-plus"></i> Create Occurrence</a>
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary"><i class="fa fa-plus"></i> Create Biometric</a>
 							</div>
 						</div>
 					</div>
-					<!-- /Page Header -->
-
-					{{-- <!-- Search Filter -->
-					<div class="row filter-row">
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<input type="text" class="form-control floating">
-								<label class="focus-label">Employee Name</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus select-focus">
-								<select class="select floating">
-									<option value=""> -- Select -- </option>
-									<option value="">Employee</option>
-									<option value="1">Manager</option>
-								</select>
-								<label class="focus-label">Role</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus select-focus">
-								<select class="select floating">
-									<option> -- Select -- </option>
-									<option> Pending </option>
-									<option> Approved </option>
-									<option> Rejected </option>
-								</select>
-								<label class="focus-label">Leave Status</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<div class="cal-icon">
-									<input class="form-control floating datetimepicker" type="text">
-								</div>
-								<label class="focus-label">From</label>
-							</div>
-						</div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<div class="cal-icon">
-									<input class="form-control floating datetimepicker" type="text">
-								</div>
-								<label class="focus-label">To</label>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<a href="#" class="btn btn-success btn-block"> Search </a>
-						</div>
-                    </div>
-					<!-- /Search Filter --> --}}
+		
 
 					<div class="row">
 						<div class="col-md-12">
@@ -127,19 +76,19 @@
 								<table class="table table-striped custom-table datatable">
 									<thead>
 										<tr>
-											<th>Signatory</th>
-                                            <th>ID</th>
-											<th>Time</th>
-                                            <th>Ref</th>
-											<th>Subject</th>
-                                            <th>Occurrence</th>
+											<th>Name of Department</th>
+                                            <th>CCTV </th>
+											<th>Biometric</th>
+                                            <th>Working Well</th>
+											<th>Faulty</th>
+                                            <th>Date Installed </th>
 											<th class="text-right">Action</th>
 										</tr>
 									</thead>
 									<tbody>
                                         @foreach ($cctv as $item)
 										<tr>
-											<td>{{ $item->name }}</td>
+											<td>{{ $item->department->name }}</td>
 											<td>{{ $item->cctv }}</td>
 											<td>{{ $item->biometric }}</td>
 											<td>{{ $item->working_well }}</td>
@@ -170,7 +119,7 @@
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">Create Occurrence</h5>
+								<h5 class="modal-title">Create Biometrics</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -189,13 +138,13 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>CCTV <span class="text-danger"></span></label>
+                                            <label>Installed CCTV <span class="text-danger"></span></label>
 
                                                 <input class="form-control" type="text" name="cctv">
 
                                         </div>
                                         <div class="form-group">
-                                            <label>Biometric <span class="text-danger"></span></label>
+                                            <label>Installed Biometric System <span class="text-danger"></span></label>
 
                                                 <input class="form-control" type="text" name="biometric">
 
@@ -208,21 +157,19 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Faulty <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
+                                            <div >
                                                 <input class="form-control" type="text" name="faulty">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Date Installed <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="text" name="date_installed">
+                                            <div >
+                                                <input class="form-control"  type="datetime-local" name="date_installed">
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
                                             <label>Last Maintenance <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="text" name="last_maintenance">
+                                            <div >
+                                                <input class="form-control" type="datetime-local" name="last_maintenance">
                                             </div>
                                         </div>
 

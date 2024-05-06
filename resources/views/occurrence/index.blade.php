@@ -62,64 +62,15 @@
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
 									<li class="breadcrumb-item active">Occurrence</li>
 								</ul>
-							</div>
+							</div> 
+							
 							<div class="col-auto float-right ml-auto">
 								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary"><i class="fa fa-plus"></i> Create Occurrence</a>
+							<a href="{{route('pdf.index')}}" method="POST" class=" btn btn-success" traget="_blank"=> Print Records</a>
 							</div>
 						</div>
 					</div>
-					<!-- /Page Header -->
-
-					{{-- <!-- Search Filter -->
-					<div class="row filter-row">
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<input type="text" class="form-control floating">
-								<label class="focus-label">Employee Name</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus select-focus">
-								<select class="select floating">
-									<option value=""> -- Select -- </option>
-									<option value="">Employee</option>
-									<option value="1">Manager</option>
-								</select>
-								<label class="focus-label">Role</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus select-focus">
-								<select class="select floating">
-									<option> -- Select -- </option>
-									<option> Pending </option>
-									<option> Approved </option>
-									<option> Rejected </option>
-								</select>
-								<label class="focus-label">Leave Status</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<div class="cal-icon">
-									<input class="form-control floating datetimepicker" type="text">
-								</div>
-								<label class="focus-label">From</label>
-							</div>
-						</div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<div class="cal-icon">
-									<input class="form-control floating datetimepicker" type="text">
-								</div>
-								<label class="focus-label">To</label>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<a href="#" class="btn btn-success btn-block"> Search </a>
-						</div>
-                    </div>
-					<!-- /Search Filter --> --}}
+	
 
 					<div class="row">
 						<div class="col-md-12">
@@ -129,8 +80,10 @@
 										<tr>
 											<th>Signatory</th>
                                             <th>ID</th>
-											<th>Time</th>
-                                            <th>Ref</th>
+											<th>Shift</th>
+											<th>Incident Time</th>
+                                            <th>OB No.</th>
+											<th>Reference No.</th>
 											<th>Subject</th>
                                             <th>Occurrence</th>
 											<th class="text-right">Action</th>
@@ -141,9 +94,11 @@
 										<tr>
 											<td>{{ $item->officer->name }}</td>
 											<td>{{ $item->id }}</td>
+											<td>{{ $item->shift }}</td>
 											<td>{{ $item->date_time }}</td>
 											<td>{{ $item->ref }}</td>
 											<td>{{ $item->subject }}</td>
+											<td>{{ $item->entry }}</td>
 											<td>{{ $item->occurrence }}</td>
 											<td class="text-right">
 												<div class="dropdown dropdown-action">
@@ -189,37 +144,101 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Date and Time <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="time" name="date_time">
+                                            <div >
+                                                <input class="form-control" type="datetime-local" name="date_time" required>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Shift <span class="text-danger"></span></label>
 
-                                                <input class="form-control" type="text" name="shift">
+										<div class="form-group">
+                                         <label for="shift">Shift <span class="text-danger">*</span></label>
+   											 <select class="form-control" name="shift" id="shift" required>
+     										      <option value="morning">Day Shift </option>
+      											  <option value="evening">Night Shift</option>
+   											 </select>
+										</div>
+
+                                        <div class="form-group">
+                                            <label>Referrence Number <span class="text-danger"></span></label>
+                                            <input class="form-control" type="text" name="entry" maxlength="4" required>
 
                                         </div>
                                         <div class="form-group">
-                                            <label>Entry <span class="text-danger"></span></label>
+                                            <label>OB Number.<span class="text-danger"></span></label>
 
-                                                <input class="form-control" type="text" name="entry">
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>REF <span class="text-danger"></span></label>
-
-                                                <input class="form-control" type="text" name="ref">
+                                                <input class="form-control" type="text" name="ref" maxlength="4" required>
 
                                         </div>
                                         <div class="form-group">
-                                            <label>Subject <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="text" name="subject">
-                                            </div>
-                                        </div>
+                                         <label for="subject">Subject <span class="text-danger">*</span></label>
+										 <select class="form-control" name="subject" id="subject" placeholder="Search records... required>
+    <option value="">Select a crime</option>
+    <option value="traffic_offense">Traffic Offense</option>
+    <option value="criminal_offense">Criminal Offense</option>
+    <option value="drug_offense">Drug Offense</option>
+    <option value="property_offense">Property Offense</option>
+    <option value="violent_offense">Violent Offense</option>
+    <option value="white_collar_offense">White-Collar Offense</option>
+    <option value="sexual_offense">Sexual Offense</option>
+    <option value="juvenile_offense">Juvenile Offense</option>
+    <option value="cyber_offense">Cyber Offense</option>
+    <option value="environmental_offense">Environmental Offense</option>
+	<option value="Sexual harassment">Sexual harassment</option>
+        <option value="Subletting">Subletting</option>
+
+        <option value="Found property">Found property</option>
+        <option value="Lost property">Lost property</option>
+        <option value="Giving false information">Giving false information</option>
+        <option value="Healthy / safety hazards">Healthy/Safety hazards</option>
+        <option value="Illegal photo shooting">Illegal photo shooting</option>
+        <option value="Impersonation">Impersonation</option>
+        <option value="Malicious damage to property">Malicious damage to property</option>
+        <option value="Aggravated Robbery">Aggravated Robbery</option>
+        <option value="Assault">Assault</option>
+        <option value="Breach of confidentiality">Breach of confidentiality</option>
+        <option value="Breach of UNZA Staff Disciplinary Code">Breach of UNZA Staff Disciplinary Code</option>
+        <option value="Charging of Squatter fees">Charging of Squatter fees</option>
+        <option value="Cohabiting">Cohabiting</option>
+        <option value="Confiscation">Confiscation</option>
+        <option value="Criminal Trespass">Criminal Trespass</option>
+        <option value="Declaration">Declaration</option>
+        <option value="Detention">Detention</option>
+        <option value="Disorderly behaviour">Disorderly behaviour</option>
+		<option value="Disorderly behaviour">Other</option>
+		<option value="Missing person">Missing person</option>
+        <option value="R.T.A">R.T.A</option>
+        <option value="Robbery">Robbery</option>
+        <option value="Sexual Harassment">Sexual Harassment</option>
+        <option value="Subletting">Subletting</option>
+        <option value="Suspicious Activity">Suspicious Activity</option>
+        <option value="Theft">Theft</option>
+        <option value="Theft from the motor vehicle">Theft from the motor vehicle</option>
+        <option value="Theft of motor vehicle">Theft of motor vehicle</option>
+        <option value="Threaten violence">Threaten violence</option>
+        <option value="Unauthorized operating of equipment">Unauthorized operating of equipment</option>
+        <option value="Eviction">Eviction</option>
+        <option value="Exam Malpractice">Exam Malpractice</option>
+        <option value="Excessive speed">Excessive speed</option>
+        <option value="Suspicious Activity">Suspicious Activity</option>
+        <option value="Theft">Theft</option>
+        <option value="Theft from the motor vehicle">Theft from the motor vehicle</option>
+        <option value="Theft of motor vehicle">Theft of motor vehicle</option>
+        <option value="Threaten violence">Threaten violence</option>
+        <option value="Unauthorized operating of equipment">Unauthorized operating of equipment</option>
+        <option value="Unsecured motor vehicle">Unsecured motor vehicle</option>
+        <option value="Unsecured Premises">Unsecured Premises</option>
+        <option value="Use of insulting / Abusive language">Use of insulting / Abusive language</option>
+      <select class="form-control" name="offense" id="offense" required>
+      
+</optgroup>
+</select>
+
+</select>
+
+										</div>
+
                                         <div class="form-group">
                                             <label>Occurrence <span class="text-danger">*</span></label>
-                                            <textarea rows="4" class="form-control" name="occurrence"></textarea>
+                                            <textarea rows="8" class="form-control" name="occurrence" required></textarea>
                                         </div>
                                         <div class="submit-section">
                                             <button class="btn btn-primary submit-btn">Save</button>

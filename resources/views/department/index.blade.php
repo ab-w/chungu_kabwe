@@ -51,14 +51,14 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Department</h3>
+								<h3 class="page-title">Create Schools and Units </h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
 									<li class="breadcrumb-item active">Department</li>
 								</ul>
 							</div>
 							<div class="col-auto float-right ml-auto">
-								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_department"><i class="fa fa-plus"></i> Add Department</a>
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_department"><i class="fa fa-plus"></i> Add School</a>
 							</div>
 						</div>
 					</div>
@@ -74,7 +74,7 @@
 
 										<tr>
 											<th style="width: 30px;">#</th>
-											<th>Department Name</th>
+											<th>School/Department </th>
 											<th class="text-right">Action</th>
 										</tr>
 

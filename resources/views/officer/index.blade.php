@@ -68,84 +68,26 @@
 							</div>
 						</div>
 					</div>
-					<!-- /Page Header -->
-
-					{{-- <!-- Search Filter -->
-					<div class="row filter-row">
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<input type="text" class="form-control floating">
-								<label class="focus-label">Employee Name</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus select-focus">
-								<select class="select floating">
-									<option value=""> -- Select -- </option>
-									<option value="">Employee</option>
-									<option value="1">Manager</option>
-								</select>
-								<label class="focus-label">Role</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus select-focus">
-								<select class="select floating">
-									<option> -- Select -- </option>
-									<option> Pending </option>
-									<option> Approved </option>
-									<option> Rejected </option>
-								</select>
-								<label class="focus-label">Leave Status</label>
-							</div>
-					   </div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<div class="cal-icon">
-									<input class="form-control floating datetimepicker" type="text">
-								</div>
-								<label class="focus-label">From</label>
-							</div>
-						</div>
-					   <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<div class="form-group form-focus">
-								<div class="cal-icon">
-									<input class="form-control floating datetimepicker" type="text">
-								</div>
-								<label class="focus-label">To</label>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-							<a href="#" class="btn btn-success btn-block"> Search </a>
-						</div>
-                    </div>
-					<!-- /Search Filter --> --}}
-
+					
 					<div class="row">
 						<div class="col-md-12">
 							<div class="table-responsive">
 								<table class="table table-striped custom-table datatable">
 									<thead>
 										<tr>
-											<th>No</th>
-                                            <th>Officer Name</th>
-											<th>Address</th>
-                                            <th>Phone Number</th>
-											<th>Man Number</th>
-                                            <th>Subject</th>
+                                            <th>No</th>
+											<th>Name</th>
+                                            <th>Deployment Location</th>
+											<th>Phone Number</th>
+                                            <th>Man Number</th>
 											<th class="text-right">Action</th>
 										</tr>
 									</thead>
 									<tbody>
                                         @foreach ($officer as $item)
 										<tr>
-											<td>
-												<h2 class="table-avatar">
-													{{-- <a href="profile.html" class="avatar"><img alt="" src="https://ui-avatars.com/api/?name={{urlencode(auth()->user()->name)}}&color=7F9CF5&background=EBF4FF’” width=“40” class=“mr2” /" alt=""></a>
-													<a href="profile.html">{{ $profileData->name }} <span>Role: {{ $profileData->role }}  Date: {{ $profileData->created_at }}</span></a> --}}
-												</h2>
-											</td>
-											{{-- <td><img src="/images/category{{ $officer->image }}" width="50px"></td> --}}
+											
+												<td>{{ $item->no }}</td>
 											<td>{{ $item->name }}</td>
 											<td>{{ $item->address }}</td>
 											<td>{{ $item->phone_number }}</td>
@@ -186,36 +128,36 @@
                                         <div class="form-group">
                                             <label>Officer Name <span class="text-danger"></span></label>
 
-                                                <input class="form-control" type="text" name="name">
+                                                <input class="form-control" type="text" name="name" maxlength="15"required>
 
                                         </div>
                                         <div class="form-group">
-                                            <label>Address <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="text" name="address">
+                                            <label>Deployment Area<span class="text-danger"></span></label>
+                                            <div >
+                                                <input class="form-control" type="text" name="address" maxlength="15" required>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div >
                                             <label>Phone Number <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="text" name="phone_number">
+                                            <div >
+                                                <input class="form-control" type="text" name="phone_number" maxlength="10" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Man Number <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="text" name="badge_number">
-                                            </div>
+                                            <div >
+											<input class="form-control" type="number" name="badge_number" min="0" pattern="\d+" maxlength="8" required>
+      </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Image <span class="text-danger"></span></label>
-                                            <div class="cal-icon">
-                                                <input class="form-control" type="file" name="image">
+                                            <div >
+                                                <input class="form-control" type="file" name="image" required>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div >
                                             <label>Officer Type <span class="text-danger">*</span></label>
-                                            <select class="select" name="officer_type">
+                                            <select class="select" name="officer_type" required>
                                                 <option>Unza Officer</option>
                                                 <option>Control 7</option>
                                             </select>

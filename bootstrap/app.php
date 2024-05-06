@@ -43,6 +43,31 @@ $app->singleton(
 
 /*
 |--------------------------------------------------------------------------
+| Register Configuration Files
+|--------------------------------------------------------------------------
+|
+| Here we will register the configuration files for the application.
+| Optionally, you may pass an array of providers to register only those
+| needed for the application to function.
+|
+*/
+
+ // Add this line to configure DomPDF
+
+/*
+|--------------------------------------------------------------------------
+| Register Service Providers
+|--------------------------------------------------------------------------
+|
+| Here we will register all of the application's service providers which
+| are used to bind services into the container. Service providers are
+| totally optional, so you are not required to uncomment this line.
+|
+*/
+
+
+/*
+|--------------------------------------------------------------------------
 | Return The Application
 |--------------------------------------------------------------------------
 |

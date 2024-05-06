@@ -13,6 +13,7 @@ class Officer extends Model
 
         protected $fillable = [
             'name',
+            'office_type',
             'address',
             'phone_number',
             'image',
@@ -24,9 +25,9 @@ class Officer extends Model
             return $this->hasMany(Occurrence::class, 'officer_id', 'id');
         }
 
-        public function officer()
+        public function rapid()
         {
-            return $this->hasMany(Officer::class, 'officer_id', 'id');
+            return $this->hasMany(Rapid::class, 'officer_id', 'id');
         }
 
 }

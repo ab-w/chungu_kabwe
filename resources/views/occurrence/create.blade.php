@@ -74,45 +74,55 @@
 										<div class="row">
 											<div class="col-xl-6">
 												<div class="form-group row">
-													<label class="col-lg-3 col-form-label">Shift</label>
+													<!-- <label class="col-lg-3 col-form-label">Shift</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="shift">
-													</div>
+														<input type="text" class="form-control" name="shift" required>
+													</div> -->
+
+													
+													<div class="form-group">
+                                            <label>Shifts<span class="text-danger">*</span></label>
+                                            <select class="select" name="shift" required>
+                                                <option>Night Shift</option>
+                                                <option>Day Shift</option>
+                                            </select>
+                                        </div>
+													
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">REF</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="ref">
+														<input type="text" class="form-control" name="ref" required>
 													</div>
 												</div>
                                                 <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Entry</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="entry">
+														<input type="text" class="form-control" name="entry" required>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Time</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="date_time">
+														<input type="datetime-local" class="form-control" name="date_time" required>
 													</div>
 												</div>
                                                 <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Subject</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="subject">
+														<input type="text" class="form-control" name="subject" required>
 													</div>
 												</div>
                                                 <div class="form-group row">
 													<label class="col-lg-3 col-form-label">Occurrence</label>
 													<div class="col-lg-9">
-														<input type="occurrence" class="form-control" name="occurrence">
+														<input type="occurrence" class="form-control" name="occurrence  " required>
 													</div>
 												</div>
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Officer</label>
 													<div class="col-lg-9">
-														<select class="select" name="officer_id">
+														<select class="select" name="officer_id " required>
 															<option>Select</option>
 															@foreach ($officer as $item)
                                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -125,8 +135,8 @@
 
 
 										<div class="text-left">
-											<button type="submit" class="btn btn-primary">Submit</button>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-success">Submit</button>
+                                            <button type="submit" class="btn btn-success">Submit</button>
 										</div>
 									</form>
 								</div>

@@ -7,7 +7,7 @@
 		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
-        <title>occurrence - Security Management System</title>
+        <title>Rapid Response</title>
 
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
@@ -94,7 +94,7 @@
 												<div class="form-group row">
 													<label class="col-lg-3 col-form-label">Time</label>
 													<div class="col-lg-9">
-														<input type="text" class="form-control" name="date_time">
+														<input type="datetime-local" class="form-control" name="date_time">
 													</div>
 												</div>
                                                 <div class="form-group row">
